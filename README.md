@@ -81,6 +81,7 @@ The extract_payload function is designed to extract payload data from a given in
 Function Signature
 
 def extract_payload(input_array):
+
     """Extracts the payload from the given data and returns the payload data in a new array.
 
     Args:
