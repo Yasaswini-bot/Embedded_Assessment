@@ -1,0 +1,11 @@
+def extract_payload(input_array):
+    if len(input_array) >= 6:
+        payload_length = input_array[4]
+        output_array = input_array[5:5+payload_length]
+        return output_array
+    else:
+        return None
+
+input_array = [0o0, 0o2, 0o0, 0o11, 0o1, 0o1, 0o2, 0o3, 0o4, 0o5, 0o6, 0o7, 0o10, 0o11, 0o12, 0o13, 0o14, 0o15, 0o16, 0o17]
+output_array = extract_payload(input_array)
+print(output_array)
