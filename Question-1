@@ -1,0 +1,42 @@
+class CircularQueue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.queue = [None] * capacity
+        self.read_index = 0
+        self.write_index = 0
+
+    def is_empty(self):
+        return self.read_index == self.write_index
+
+    def is_full(self):
+        return (self.write_index + 1) % self.capacity == self.read_index
+
+    def read_queue(self):
+        """Reads the oldest data from the queue.
+
+        Returns:
+            The oldest data in the queue, or None if the queue is empty.
+        """
+        if self.is_empty():
+            return None
+        data = self.queue[self.read_index]
+        self.read_index = (self.read_index + 1) % self.capacity
+        return data
+
+    def write_queue(self, data):
+        """Writes data to the queue.
+
+        If the queue is full, the oldest data is overwritten.
+
+        Args:
+            data: The data to write to the queue.
+        """
+        if self.is_full():
+            self.read_index = (self.read_index + 1) % self.capacity
+        self.queue[self.write_index] = data
+        self.write_index = (self.write_index + 1) % self.capacity
+
+    def clear_queue(self):
+        """Clears the queue."""
+        self.read_index = 0
+        self.write_index = 0
